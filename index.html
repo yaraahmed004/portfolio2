@@ -85,10 +85,25 @@
 
 
 
-        <section id="page-4">
-            <h2>Let's talk.</h2>
-            <p>hello@yara.dev</p>
-        </section>
+    <section id="page-4">
+        <h2>Let's talk.</h2>
+        <form id="contact-form" class="contact-form" novalidate>
+            <div class="form-group">
+                <label for="contact-name">Name</label>
+                <input type="text" id="contact-name" placeholder="Your name" required>
+            </div>
+            <div class="form-group">
+                <label for="contact-email">Email</label>
+                <input type="email" id="contact-email" placeholder="your@email.com" required>
+            </div>
+            <div class="form-group">
+                <label for="contact-message">Message</label>
+                <textarea id="contact-message" rows="4" placeholder="What's on your mind?" required></textarea>
+            </div>
+            <button type="submit" class="github-btn submit-btn">Send message</button>
+            <p id="form-message" class="form-message"></p>
+        </form>
+    </section>
 
 
 
