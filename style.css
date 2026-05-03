@@ -37,17 +37,21 @@ body {
 #page-2, #page-3, #page-4 {
     position: absolute;
     inset: 0;
-    display: none;
+    display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     gap: 2rem;
     color: white;
     overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
 }
 
 #page-2.active, #page-3.active, #page-4.active {
-    display: flex;
+    opacity: 1;
+    pointer-events: all;
 }
 
 /* ── Blurred bg ── */
