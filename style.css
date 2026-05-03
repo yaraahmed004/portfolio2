@@ -3,13 +3,21 @@
     padding: 0;
     box-sizing: border-box;
 }
-body {
-    height: 200vh;
+
+html {
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    height: 100%;
 }
 
+body {
+    height: 100%;
+}
+
+/* ── Hero ── */
 #page-1 {
-    position: relative;
     height: 100vh;
+    scroll-snap-align: start;
     background-image: url('assets/image1.jpg');
     background-size: cover;
     background-position: center;
@@ -18,20 +26,57 @@ body {
     justify-content: center;
 }
 
-/* About, Projects, Contact backgrounds */
+/* ── Panels wrapper — second snap point ── */
+#panels {
+    height: 100vh;
+    scroll-snap-align: start;
+    position: relative;
+}
+
+/* ── Each panel fills the wrapper ── */
 #page-2, #page-3, #page-4 {
-    position: fixed;
+    position: absolute;
     inset: 0;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.6s ease;
-    background: #0c0c0c;
-    color: white;
     flex-direction: column;
     gap: 2rem;
+    color: white;
+    overflow: hidden;
+}
+
+#page-2.active, #page-3.active, #page-4.active {
+    display: flex;
+}
+
+/* ── Blurred bg ── */
+#page-2::before,
+#page-3::before,
+#page-4::before {
+    content: '';
+    position: absolute;
+    inset: -20px;
+    background-image: url('assets/image1.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: blur(5px) brightness(0.7);
+    z-index: 0;
+}
+
+#page-2 > *, #page-3 > *, #page-4 > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* ── Typography ── */
+.luxurious {
+    font-family: "Luxurious Script", cursive;
+    font-weight: 400;
+    font-style: normal;
+    text-align: center;
+    color: white;
+    font-size: 10rem;
 }
 
 #page-3 h2, #page-4 h2 {
@@ -40,44 +85,18 @@ body {
 }
 
 #page-3 p, #page-4 p {
-    color: #aaa;
+    color: #ccc;
     font-size: 1rem;
 }
 
-.top-left {
-   position: fixed;
-   top: 10px;
-   left: 10px;
-   margin: 0;
-   color: white;
-
-}
-
-.luxurious {
-  font-family: "Luxurious Script", cursive;
-  font-weight: 400;
-  font-style: normal;
-  text-align: center;
-  color: white;
-  font-size: 10rem;
-  transition: opacity 0.3s ease;
-}
-
-
-/* Only the active section is visible */
-#page-2.active, #page-3.active, #page-4.active {
-    opacity: 1;
-    pointer-events: all;
-}
-
-
-
+/* ── Photo grid ── */
 .photo-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
     max-width: 900px;
     width: 100%;
+    padding: 0 2rem;
 }
 
 .photo-card {
@@ -91,8 +110,8 @@ body {
 .placeholder {
     width: 100%;
     aspect-ratio: 3/4;
-    background: #1e1e1e;
-    border: 1px solid #333;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.2);
     border-radius: 12px;
     display: flex;
     align-items: center;
@@ -108,18 +127,17 @@ body {
 
 .photo-card p {
     font-size: 0.85rem;
-    color: #aaa;
+    color: #ccc;
     line-height: 1.6;
 }
 
-
-/* Nav buttons fixed at the bottom center */
+/* ── Nav buttons ── */
 .nav-buttons {
     position: fixed;
     bottom: 2rem;
     left: 50%;
     transform: translateX(-50%);
-    display: none; /* hidden until you scroll past hero */
+    display: none;
     gap: 1rem;
     z-index: 100;
 }
