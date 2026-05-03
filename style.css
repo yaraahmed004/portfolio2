@@ -336,3 +336,21 @@ body {
 
 .form-message.success { color: rgba(100, 220, 150, 0.9); }
 .form-message.error-msg { color: rgba(255, 100, 100, 0.8); }
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.2rem;
+}
+
+.social-icon {
+    color: rgba(255, 255, 255, 0.5);
+    transition: color 0.2s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+}
+
+.social-icon:hover {
+    color: white;
+    transform: translateY(-2px);
+}
