@@ -5,7 +5,7 @@
 }
 
 html {
-    scroll-snap-type: y mandatory;
+    scroll-snap-type: y proximity;
     overflow-y: scroll;
     height: 100%;
 }
@@ -17,13 +17,89 @@ body {
 /* ── Hero ── */
 #page-1 {
     height: 100vh;
-    scroll-snap-align: start;
-    background-image: url('assets/image1.jpg');
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('assets/image9.jpg');
     background-size: cover;
     background-position: center;
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
+    padding: 2rem;
+}
+
+.hero-content {
+    max-width: 900px;
+}
+
+.hero-content {
+    max-width: 900px;
+}
+
+.hero-subtitle {
+    font-family: 'Playfair Display', serif;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 1rem;
+}
+
+.hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    line-height: 1.1;
+    color: white;
+    font-weight: 400;
+}
+
+.hero-title span {
+    font-family: "Luxurious Script", cursive;
+    font-size: 6rem;
+    display: block;
+    margin-top: -10px;
+    color: #d4a373; /* A soft gold/brass tone from your reference */
+}
+
+.hero-description {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: rgba(255,255,255,0.7);
+    margin: 2rem auto;
+    max-width: 600px;
+}
+
+/* Reference-style Buttons */
+.hero-btns {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.primary-btn, .secondary-btn {
+    padding: 0.8rem 2rem;
+    text-decoration: none;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+    border-radius: 50px;
+}
+
+.primary-btn {
+    background: #d4a373; /* Muted olive green from the reference */
+    color: white;
+}
+
+.secondary-btn {
+    border: 1px solid white;
+    color: white;
+}
+
+.primary-btn:hover {
+    background: #a5a58d;
+    transform: translateY(-2px);
 }
 
 /* ── Panels wrapper — second snap point ── */
@@ -61,11 +137,12 @@ body {
     content: '';
     position: absolute;
     inset: -20px;
-    background-image: url('assets/image1.jpg');
+    background-image: url('assets/image9.jpg');
     background-size: cover;
     background-position: center;
     filter: blur(5px) brightness(0.7);
     z-index: 0;
+    filter: blur(8px) sepia(0.3) brightness(0.6); /* Adds a vintage warmth */
 }
 
 #page-2 > *, #page-3 > *, #page-4 > * {
@@ -151,7 +228,7 @@ body {
 }
 
 .nav-buttons button {
-    background: rgba(255,255,255,0.15);
+    background: #d4a373;
     border: 1px solid rgba(255,255,255,0.3);
     color: white;
     width: 44px;
@@ -187,14 +264,14 @@ body {
 }
 
 .project-card {
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 252, 240, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 16px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     backdrop-filter: blur(6px);
-    transition: transform 0.2s ease, background 0.2s ease;
+    /*transition: transform 0.2s ease, background 0.2s ease;*/
 }
 
 .project-card:hover {
@@ -354,3 +431,5 @@ body {
     color: white;
     transform: translateY(-2px);
 }
+.photo-card:nth-child(odd) { transform: rotate(-1.5deg); }
+.photo-card:nth-child(even) { transform: rotate(1.5deg); }
