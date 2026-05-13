@@ -7,10 +7,8 @@ header('Access-Control-Allow-Headers: Content-Type');
 
 $data = json_decode(file_get_contents('php://input'), true);
 
-$host = 'localhost';
-$db   = 'portfolio';
-$user = 'root';
-$pass = '';
+require_once 'config.php'; // use 'config.php' for files in root, '../config.php' for files in admin/
+$pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8", DB_USER, DB_PASS);
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $user, $pass);
